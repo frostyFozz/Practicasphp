@@ -32,37 +32,64 @@
 
     <?php $libros = [
         [
-        "name" => "Sueñan los androides con obejas electricas",
-        "autor" => "Philip K. Dick",
-        "purchaseUrl" => "https://www.amazon.com/-/es/Philip-K"
-        
-    ],
+            "name" => "Sueñan los androides con obejas electricas",
+            "autor" => "Philip K. Dick",
+            "releaseYear" => "1968",
+            "purchaseUrl" => "https://www.amazon.com/-/es/Philip-K"
 
-    [
-        "name" => "Neuromante",
-        "autor" => "William Gibson",
-        "purchaseUrl" => "https://www.amazon.com/-/es/William-Gibson"
-    ],
+        ],
 
-    [
-        "name" => "Snow Crash",
-        "autor" => "Neal Stephenson",
-        "purchaseUrl" => "https://www.amazon.com/-/es/Neal-Stephenson"
-    ]
+        [
+            "name" => "Neuromante",
+            "autor" => "William Gibson",
+            "releaseYear" => "1984",
+            "purchaseUrl" => "https://www.amazon.com/-/es/William-Gibson"
+        ],
+
+        [
+            "name" => "Snow Crash",
+            "autor" => "Neal Stephenson",
+            "releaseYear" => "1992",
+            "purchaseUrl" => "https://www.amazon.com/-/es/Neal-Stephenson"
+        ],
+        [
+            "name" => "Conde Cero  ",
+            "autor" => "William Gibson",
+            "releaseYear" => "1986",
+            "purchaseUrl" => "https://www.amazon.com/-/es/William-Gibson"
+        ]
     ];
     ?>
+
+
+    <?php function filterByAutor($libros, $autor )
+        {
+        $filteredbooks = [];
+
+        foreach ($libros as $libro) {
+
+            if ($libro['autor'] === $autor) {
+
+                $filteredbooks[] = $libro;
+            }
+         } 
+         
+
+         return $filteredbooks;
+        }
+    ?>
+
     <ul>
-        <?php foreach ($libros as $libro) : ?>
-            <li>
-                <a href="<?php echo $libro['purchaseUrl']; ?>">
-                    <?php echo $libro['name']; ?> by <?php echo $libro['autor']; ?>
-                </a>
-            </li>
+        <?PHP foreach( filterByAutor($libros, 'William Gibson') as $libro): ?>
+        <li>
+            <a href="<?php echo $libro['purchaseUrl']; ?>">
+                <?php echo $libro['name']; ?> - by <?php echo $libro['autor']; ?> - <?php echo $libro["releaseYear"] ?>
+            </a>
+        </li>
         <?php endforeach; ?>
 
-
     </ul>
-   
+
 
 
 </body>
